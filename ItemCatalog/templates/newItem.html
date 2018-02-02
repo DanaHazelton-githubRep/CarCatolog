@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<h2>Add a Car for {{category_name}}</h2>
+
+			<form action="#" method = "post">
+				
+					<p> Year and Model for Vehicle</p>
+					<input type ="text"  class="entry-box" name="name"placeholder="ex: 1994 Mustang GT">
+
+					<p>Description:</p>
+					<textarea class="entry-box" name="description" placeholder="Description of Vehicle"></textarea>
+					<br>				
+					<button type="submit" class="button" id="submit" type="submit">Create</button>
+			</form>
+
+					<a href = '{{url_for('showCatalog')}}'>
+        			<button class="button"> Cancel</button>
+        			</a>
+				
+
+{% endblock %}
+

@@ -1,0 +1,14 @@
+{%extends "base.html"%}
+
+{%block content%}
+
+<h2>Most Recently Added Hot Rods</h2>
+
+<ul>
+	{%for item in items%}
+	 <li><a href='{{url_for('showItem', category_name = item.category.name) }}'>
+	 {{item.name}} ({{item.category.name}})</a></li>
+	{%endfor%}
+</ul>
+
+{%endblock%}

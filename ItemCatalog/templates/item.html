@@ -1,0 +1,26 @@
+{%extends "base.html"%}
+
+{%block content%}
+
+<h2>Hot Rods-{{category.name}}</h2>
+{% if items !=[] %}
+    {% for i in items %}
+    <div><b>{{i.name}}</b>
+    <ul>
+    <li>
+        <a href='{{url_for('descItem', category_name = category.name, item_name=i.name) }}'>Description</a> |
+         <a href='{{url_for('editItem', category_name = category.name, item_name=i.name) }}'>Edit</a> |
+        <a href='{{url_for('deleteItem', category_name = category.name, item_name=i.name) }}'>Delete</a>
+    </li>
+    </ul>
+    {% endfor %}
+{%else%}
+    <p> Be the first to add a Hot Rod to this Catogorie.</p>
+{% endif %}
+<a href="{{url_for('newItem', category_name = category.name )}}">
+    <button type="submint">
+        <span>Add a Hot Rod</span>
+    </button></a>
+    <button><a href = '/catalog/{{category.name}}/item/JSON'>JSON Dump for {{category.name}} items</a></button>
+    <button><a href='{{url_for('showCatalog')}}'> <span >Show All Catogories</span></a></button>
+{%endblock%}

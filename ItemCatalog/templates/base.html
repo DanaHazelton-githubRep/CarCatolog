@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang= "en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300" rel="stylesheet">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Partybarge Car Catolog</title>
+    <!-- <link rel="icon" href="../../favicon.ico"> -->
+    <link type="text/css" rel="stylesheet" href="/static/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="/static/css/blog.css" rel="stylesheet">
+  </head>
+  <body class="mat">
+    <div class="container-fluid">
+      <header class="row orange-mat">
+        <div class="col-md-12">
+          <div class="col-md-3">
+            <img class="title-logo" src="/static/profile_images/94_GT.jpg" alt="family_boating pic">
+          </div>
+          <div class="col-md-3 text-center orange-mat">
+
+            <h2>Popular Hot Rod Links</h2>
+            <ul>
+              <li><a href="#">Chevy.com</a></li>
+              <li><a href="#">Ford.com</a></li>
+              <li><a href="#">Dodge.com</a></li>
+              <li><a href="#">Pontiac.com</a></li>
+          </div>
+          <div class="col-md-6" >
+            <h1>Partybarge Car Catolog</h1>
+            <nav class="navbar navbar-default">
+              <div class="container nav-buttons">
+                <ul class="nav navbar-nav">
+                  <li class="nav-item"><a class="nav-link" href="/">Show All Catogories</a>
+                  </li>
+                  {% if 'username' not in session %}
+                    <li class="nav-item text-right"><a class="nav-link" href="{{url_for('showLogin')}}">Click Here to Login </a></li>
+                  {% else %}
+                    <li class="nav-item text-right"><a class="nav-link" href="{{url_for('gdisconnect')}}">Logout</a></li>
+                  {% endif %}
+                </ul>
+              </div>
+              <div class = 'flash'>
+                  {% with messages = get_flashed_messages() %}
+                  {% if messages %}
+                  <ul>
+                    {% for message in messages %}
+                    <li> <strong> {{ message }} </strong> </li>
+                    {% endfor %}
+                  </ul>
+                  {% endif %}
+                {% endwith %}
+              </div>
+            </nav>
+          </div>
+        </div>
+      </header>
+    </div>
+    <div class="col-md-6 text-center orange-mat">
+        <h2> Hot Rod Make </h2>
+        <ul>
+          {%for cats in categories%}
+            <li><a href = "/catalog/{{cats.name}}/item"> {{cats.name}}</a></li>              
+          {%endfor%}
+        </ul>
+      <button><a href = '/catalog/JSON'>JSON Dump for Catogories</a></button>
+    </div>
+    <div class="col-md-6 text-center orange-mat">
+      {% block content %}
+      
+      {% endblock %}
+    </div>
+
+  </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="bootstrap/js/jquery.min.js"><\/script>')</script>
+<script src="../static/js/bootstrap.min.js"></script>
+</html>
+
