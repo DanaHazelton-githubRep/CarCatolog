@@ -50,7 +50,8 @@ class Items(Base):
             'name': self.name,
             'description': self.description,
             'id': self.id,
-            'category': self.category.name
+            'category': self.category.name,
+            'user_id': self.user_id
         }
 
 
